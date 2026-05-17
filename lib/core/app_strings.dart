@@ -20,7 +20,7 @@ class AppStrings {
 
   // Home AppBar
   static const String tapForBalance = 'Tap for Balance';
-  static const String userName = 'jannat Al Naeem';
+  static const String userName = 'Md.N.S.Shipat';
 
   // Menu items
   static const String sendMoney = 'Send Money';
@@ -56,4 +56,49 @@ class AppStrings {
   // bKash Bundle
   static const String bkashBundle = 'bKash Bundle';
   static const String seeAll = 'See All';
+
+  // -------------------------------------------------------------------------
+  // New strings for the side menu overlay (bKash Menu)
+  // -------------------------------------------------------------------------
+  static const String bkashMenu = 'bKash Menu';
+  static const String ava = 'AVA';
+  static const String beta = 'BETA';
+  static const String activeVirtualAssistant = 'Active virtual Assistant';
+  static const String version = 'Version 7.0.0';
+
+  // Menu item titles
+  static const String menuHome = 'Home';
+  static const String menuStatements = 'Statements';
+  static const String menuLimit = 'Limit';
+  static const String menuCustomerService = 'Customer Service';
+  static const String menuBkashMap = 'bKash Map';
+  static const String menuInformationUpdate = 'Information Update';
+  static const String menuNomineeUpdate = 'Nominee Update';
+  static const String menuDiscoverBkash = 'Discover bKash';
+  static const String menuReferBkashApp = 'Refer bKash App';
+  static const String menuLogout = 'Log out';
+
+  // Language buttons
+  static const String eng = 'ENG';
+  static const String ban = 'BAN';
+
+
+  // lib/core/app_strings.dart (add these at the end of the class)
+
+// Profile Screen
+  static const String profileTitle = 'Profile';
+  static const String edit = 'Edit';
+  static const String transactionFeaturesTitle = 'Set Your Transaction Features';
+  static const String oneTapTransaction = 'One-Tap Transaction';
+  static const String bkashNfc = 'bKash NFC';
+  static const String savedCards = 'Saved cards';
+  static const String linkedApps = 'Linked Apps';
+  static const String touchFaceId = 'Touch/Face ID';
+  static const String preferencesTitle = 'Select Your Preferences';
+  static const String selectTheme = 'Select Theme';
+  static const String notificationManagement = 'Notification Management';
+  static const String manageAccountTitle = 'Manage Your Account';
+  static const String updateBkashNumber = 'Update bKash Number';
+  static const String others = 'Others';
+
 }
