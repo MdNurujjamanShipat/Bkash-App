@@ -1,5 +1,4 @@
 import 'package:bkash_app/core/app_colors.dart';
-import 'package:bkash_app/presentation/screens/home/home_screen.dart';
 import 'package:bkash_app/presentation/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -17,7 +16,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _animController = AnimationController(
       vsync: this,
@@ -39,7 +37,6 @@ class _SplashScreenState extends State<SplashScreen>
 
   @override
   void dispose() {
-    // TODO: implement dispose
     super.dispose();
     _animController.dispose();
   }

@@ -1,4 +1,3 @@
-// lib/presentation/screens/profile/profile_screen.dart
 import 'package:bkash_app/core/app_colors.dart';
 import 'package:bkash_app/core/app_strings.dart';
 import 'package:flutter/material.dart';
@@ -11,11 +10,26 @@ class ProfileScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: AppColors.primary, // Red background as in image
+        backgroundColor: AppColors.primary,
         elevation: 0,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.pop(context),
+        centerTitle: true,
+        leading: Padding(
+          padding: const EdgeInsets.only(left: 18),
+          child: Container(
+            width: 30,
+            height: 30,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: AppColors.primary,
+              border: Border.all(color: Colors.white, width: 1),
+            ),
+            child: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.white),
+              onPressed: () => Navigator.pop(context),
+              padding: EdgeInsets.zero,
+              constraints: const BoxConstraints(),
+            ),
+          ),
         ),
         title: Text(
           AppStrings.profileTitle,
@@ -25,13 +39,17 @@ class ProfileScreen extends StatelessWidget {
             fontWeight: FontWeight.w500,
           ),
         ),
-        centerTitle: false,
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 16),
+            child: Image.asset('assets/bkash.png', height: 28),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // User info card (unchanged)
             Container(
               margin: const EdgeInsets.all(16),
               padding: const EdgeInsets.all(16),
@@ -47,50 +65,64 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        AppStrings.userName,
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      const SizedBox(height: 4),
-                      const Text(
-                        '+880 1912 474177',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ],
+                  _ProfileAvatar(
+                    imageUrl: 'https://i.postimg.cc/LsQpF0WM/KJ.jpg',
                   ),
-                  TextButton(
-                    onPressed: () {
+                  const SizedBox(width: 16),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          AppStrings.userName,
+                          style: const TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.black87,
+                          ),
+                        ),
+                        const SizedBox(height: 4),
+                        const Text(
+                          '+880 1912 474177',
+                          style: TextStyle(fontSize: 14, color: Colors.grey),
+                        ),
+                      ],
+                    ),
+                  ),
+                  GestureDetector(
+                    onTap: () {
                       ScaffoldMessenger.of(context).showSnackBar(
                         const SnackBar(content: Text('Edit Profile tapped')),
                       );
                     },
-                    style: TextButton.styleFrom(
-                      foregroundColor: AppColors.primary,
-                    ),
-                    child: Text(
-                      AppStrings.edit,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w600,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        border: Border.all(
+                          color: AppColors.primary,
+                          width: 1.5,
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Text(
+                        AppStrings.edit,
+                        style: const TextStyle(
+                          color: AppColors.primary,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
             ),
-            // Section: Set Your Transaction Features
+
             _buildSectionTitle(AppStrings.transactionFeaturesTitle),
             _buildMenuItem(
               context,
@@ -101,8 +133,7 @@ class ProfileScreen extends StatelessWidget {
             _buildMenuItem(context, AppStrings.savedCards, Icons.credit_card),
             _buildMenuItem(context, AppStrings.linkedApps, Icons.apps),
             _buildMenuItem(context, AppStrings.touchFaceId, Icons.fingerprint),
-            const Divider(height: 24, thickness: 1, indent: 16, endIndent: 16),
-            // Section: Select Your Preferences
+
             _buildSectionTitle(AppStrings.preferencesTitle),
             _buildMenuItem(context, AppStrings.selectTheme, Icons.palette),
             _buildMenuItem(
@@ -110,15 +141,18 @@ class ProfileScreen extends StatelessWidget {
               AppStrings.notificationManagement,
               Icons.notifications,
             ),
-            const Divider(height: 24, thickness: 1, indent: 16, endIndent: 16),
-            // Section: Manage Your Account
+
             _buildSectionTitle(AppStrings.manageAccountTitle),
             _buildMenuItem(
               context,
               AppStrings.updateBkashNumber,
-              Icons.phone_android,
+              Icons.account_circle_outlined,
             ),
-            _buildMenuItem(context, AppStrings.others, Icons.more_horiz),
+            _buildMenuItem(
+              context,
+              AppStrings.others,
+              Icons.dashboard_customize,
+            ),
             const SizedBox(height: 40),
           ],
         ),
@@ -148,157 +182,38 @@ class ProfileScreen extends StatelessWidget {
         style: const TextStyle(fontSize: 15, color: Colors.black87),
       ),
       onTap: () {
-        ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('$title tapped')),
-        );
+        ScaffoldMessenger.of(
+          context,
+        ).showSnackBar(SnackBar(content: Text('$title tapped')));
       },
     );
   }
 }
 
+class _ProfileAvatar extends StatelessWidget {
+  final String imageUrl;
 
+  const _ProfileAvatar({required this.imageUrl});
 
-// // lib/presentation/screens/profile/profile_screen.dart
-// import 'package:bkash_app/core/app_colors.dart';
-// import 'package:bkash_app/core/app_strings.dart';
-// import 'package:flutter/material.dart';
-//
-// class ProfileScreen extends StatelessWidget {
-//   const ProfileScreen({super.key});
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       backgroundColor: Colors.white,
-//       appBar: AppBar(
-//         backgroundColor: Colors.white,
-//         elevation: 0,
-//         leading: IconButton(
-//           icon: const Icon(Icons.arrow_back, color: Colors.black),
-//           onPressed: () => Navigator.pop(context),
-//         ),
-//         title: Text(
-//           AppStrings.profileTitle,
-//           style: const TextStyle(
-//             color: Colors.black,
-//             fontSize: 20,
-//             fontWeight: FontWeight.w500,
-//           ),
-//         ),
-//         centerTitle: false,
-//       ),
-//       body: SingleChildScrollView(
-//         child: Column(
-//           crossAxisAlignment: CrossAxisAlignment.start,
-//           children: [
-//             // User info card
-//             Container(
-//               margin: const EdgeInsets.all(16),
-//               padding: const EdgeInsets.all(16),
-//               decoration: BoxDecoration(
-//                 color: Colors.white,
-//                 borderRadius: BorderRadius.circular(12),
-//                 boxShadow: [
-//                   BoxShadow(
-//                     color: Colors.black.withValues(alpha: 0.05),
-//                     blurRadius: 8,
-//                     offset: const Offset(0, 2),
-//                   ),
-//                 ],
-//               ),
-//               child: Row(
-//                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                 children: [
-//                   Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     children: [
-//                       Text(
-//                         AppStrings.userName,
-//                         style: const TextStyle(
-//                           fontSize: 18,
-//                           fontWeight: FontWeight.bold,
-//                           color: Colors.black87,
-//                         ),
-//                       ),
-//                       const SizedBox(height: 4),
-//                       const Text(
-//                         '+880 1912 474177',
-//                         style: TextStyle(
-//                           fontSize: 14,
-//                           color: Colors.grey,
-//                         ),
-//                       ),
-//                     ],
-//                   ),
-//                   TextButton(
-//                     onPressed: () {
-//                       ScaffoldMessenger.of(context).showSnackBar(
-//                         const SnackBar(content: Text('Edit Profile tapped')),
-//                       );
-//                     },
-//                     style: TextButton.styleFrom(
-//                       foregroundColor: AppColors.primary,
-//                     ),
-//                     child: Text(
-//                       AppStrings.edit,
-//                       style: const TextStyle(
-//                         fontSize: 14,
-//                         fontWeight: FontWeight.w600,
-//                       ),
-//                     ),
-//                   ),
-//                 ],
-//               ),
-//             ),
-//             // Section: Set Your Transaction Features
-//             _buildSectionTitle(AppStrings.transactionFeaturesTitle),
-//             _buildMenuItem(context, AppStrings.oneTapTransaction),
-//             _buildMenuItem(context, AppStrings.bkashNfc),
-//             _buildMenuItem(context, AppStrings.savedCards),
-//             _buildMenuItem(context, AppStrings.linkedApps),
-//             _buildMenuItem(context, AppStrings.touchFaceId),
-//             const Divider(height: 24, thickness: 1, indent: 16, endIndent: 16),
-//             // Section: Select Your Preferences
-//             _buildSectionTitle(AppStrings.preferencesTitle),
-//             _buildMenuItem(context, AppStrings.selectTheme),
-//             _buildMenuItem(context, AppStrings.notificationManagement),
-//             const Divider(height: 24, thickness: 1, indent: 16, endIndent: 16),
-//             // Section: Manage Your Account
-//             _buildSectionTitle(AppStrings.manageAccountTitle),
-//             _buildMenuItem(context, AppStrings.updateBkashNumber),
-//             _buildMenuItem(context, AppStrings.others),
-//             const SizedBox(height: 40),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-//
-//   Widget _buildSectionTitle(String title) {
-//     return Padding(
-//       padding: const EdgeInsets.only(left: 16, top: 16, bottom: 8),
-//       child: Text(
-//         title,
-//         style: const TextStyle(
-//           fontSize: 16,
-//           fontWeight: FontWeight.w600,
-//           color: Colors.black87,
-//         ),
-//       ),
-//     );
-//   }
-//
-//   Widget _buildMenuItem(BuildContext context, String title) {
-//     return ListTile(
-//       title: Text(
-//         title,
-//         style: const TextStyle(fontSize: 15, color: Colors.black87),
-//       ),
-//       onTap: () {
-//         ScaffoldMessenger.of(context).showSnackBar(
-//           SnackBar(content: Text('$title tapped')),
-//         );
-//       },
-//     );
-//   }
-// }
+  @override
+  Widget build(BuildContext context) {
+    return CircleAvatar(
+      radius: 28,
+      backgroundColor: AppColors.primary,
+      child: ClipOval(
+        child: Image.network(
+          imageUrl,
+          width: 56,
+          height: 56,
+          fit: BoxFit.cover,
+          errorBuilder: (context, error, stackTrace) {
+            return Container(
+              color: AppColors.primary,
+              child: const Icon(Icons.person, color: Colors.white, size: 32),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}

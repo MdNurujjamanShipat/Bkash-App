@@ -1,13 +1,10 @@
 class AppStrings {
   AppStrings._();
 
-  // App
   static const String appName = 'bKash';
 
-  // Splash
   static const String splashTagline = 'Send Money. Pay Bills. More.';
 
-  // Login
   static const String logIn = 'Log In';
   static const String loginSubtitle = 'to your bkash account';
   static const String accountNumber = 'Account Number';
@@ -18,11 +15,9 @@ class AppStrings {
   static const String next = 'Next';
   static const String bangla = 'বাংলা';
 
-  // Home AppBar
   static const String tapForBalance = 'Tap for Balance';
   static const String userName = 'Md.N.S.Shipat';
 
-  // Menu items
   static const String sendMoney = 'Send Money';
   static const String mobileRecharge = 'Mobile Recharge';
   static const String cashOut = 'Cash Out';
@@ -40,11 +35,9 @@ class AppStrings {
   static const String remittance = 'Remittance';
   static const String donation = 'Donation';
 
-  // See more
   static const String seeMore = 'See More';
   static const String seeLess = 'See Less';
 
-  // Quick Features
   static const String quickFeatures = 'Quick Features';
   static const String myOffers = 'My Offers';
   static const String coupons = 'Coupons';
@@ -53,20 +46,15 @@ class AppStrings {
   static const String naeem = 'NAEEM Te...';
   static const String visa = 'VISA';
 
-  // bKash Bundle
   static const String bkashBundle = 'bKash Bundle';
   static const String seeAll = 'See All';
 
-  // -------------------------------------------------------------------------
-  // New strings for the side menu overlay (bKash Menu)
-  // -------------------------------------------------------------------------
   static const String bkashMenu = 'bKash Menu';
   static const String ava = 'AVA';
   static const String beta = 'BETA';
   static const String activeVirtualAssistant = 'Active virtual Assistant';
   static const String version = 'Version 7.0.0';
 
-  // Menu item titles
   static const String menuHome = 'Home';
   static const String menuStatements = 'Statements';
   static const String menuLimit = 'Limit';
@@ -78,17 +66,13 @@ class AppStrings {
   static const String menuReferBkashApp = 'Refer bKash App';
   static const String menuLogout = 'Log out';
 
-  // Language buttons
   static const String eng = 'ENG';
   static const String ban = 'BAN';
 
-
-  // lib/core/app_strings.dart (add these at the end of the class)
-
-// Profile Screen
-  static const String profileTitle = 'Profile';
+  static const String profileTitle = 'My Profile';
   static const String edit = 'Edit';
-  static const String transactionFeaturesTitle = 'Set Your Transaction Features';
+  static const String transactionFeaturesTitle =
+      'Set Your Transaction Features';
   static const String oneTapTransaction = 'One-Tap Transaction';
   static const String bkashNfc = 'bKash NFC';
   static const String savedCards = 'Saved cards';
@@ -100,5 +84,4 @@ class AppStrings {
   static const String manageAccountTitle = 'Manage Your Account';
   static const String updateBkashNumber = 'Update bKash Number';
   static const String others = 'Others';
-
 }

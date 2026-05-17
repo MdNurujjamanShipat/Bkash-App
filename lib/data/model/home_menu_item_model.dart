@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../../domain/entities/home_menu_item.dart';
 import '../../core/app_strings.dart';
 
-/// Concrete data model that extends the domain entity.
-/// Adds serialization logic (fromMap / toMap) and holds static sample data.
 class HomeMenuItemModel extends HomeMenuItem {
   const HomeMenuItemModel({
     required super.id,
@@ -13,26 +11,14 @@ class HomeMenuItemModel extends HomeMenuItem {
     required super.iconColor,
   });
 
-  /// Creates a model from a plain Map (e.g., from JSON / API response).
-  /// Note: IconData cannot be serialized from JSON in a real app;
-  /// this is simplified for teaching purposes.
   factory HomeMenuItemModel.fromMap(Map<String, dynamic> map) {
     return HomeMenuItemModel(
       id: map['id'] as int,
       label: map['label'] as String,
-      iconData: Icons.circle, // placeholder; real apps use asset images
+      iconData: Icons.circle,
       iconColor: AppColors.primary,
     );
   }
-
-  /// Converts to a plain Map (e.g., for JSON serialization).
-  // Map<String, dynamic> toMap() {
-  //   return {'id': id, 'label': label};
-  // }
-
-  // ---------------------------------------------------------------------------
-  // Static sample data — the 16 bKash home menu items
-  // ---------------------------------------------------------------------------
 
   static List<HomeMenuItemModel> get sampleData => [
     const HomeMenuItemModel(
